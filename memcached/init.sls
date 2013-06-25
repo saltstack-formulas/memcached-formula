@@ -1,6 +1,6 @@
 memcached:
   pkg:
-    - instaled
+    - installed
   service:
     - running
     - enable: True
