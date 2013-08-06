@@ -1,0 +1,3 @@
+# Collect the IPs of the memcached instances for use in application config
+mine_functions:
+  network.interfaces: [eth0]
