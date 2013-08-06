@@ -6,7 +6,7 @@ Install and start the memcached service
 Instructions
 ------------
 
-1.  Add this repository as a `GitFS backend`__ in your Salt master config.
+1.  Add this repository as a `GitFS backend`_ in your Salt master config.
 
 2.  Determine which minions will run memcached and ``include`` the
     ``memcached`` state.
