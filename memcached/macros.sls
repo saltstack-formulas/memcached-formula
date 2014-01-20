@@ -12,25 +12,29 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 #
+{% from "memcached/map.jinja" import defaults with context -%}
 
-memcached:
-  pkg:
-    - installed
-  service:
-    - running
-    - enable: True
-    - require:
-      - pkg: memcached
-    - watch: 
-      - file: /etc/memcached.conf
-
-/etc/memcached.conf:
-  file:
-    - managed
-    - template: jinja
-    - user: root
-    - group: root
-    - mode: 644
-    - source: salt://memcached/templates/memcached.conf
-    - require:
-      - pkg: memcached
+# Macro:
+#
+# get_config_item(item_name)
+# item_name = parameter in the config to get
+#
+{%- macro get_config_item(item_name) -%}
+{%- set default = defaults['config'].get(item_name, None) -%}
+{%- set value = salt['pillar.get']('memcached:%s' % (item_name), default) -%}
+{%- if value is string or value is number -%}
+{{ value }}
+{%- elif value is iterable -%}
+{%- if not value -%}
+None
+{%- else -%}
+{{ value | join(', ') }}
+{%- endif -%}
+{%- elif value is none -%}
+None
+{%- elif value -%}
+True
+{%- elif not value -%}
+False
+{%- endif -%}
+{%- endmacro -%}
