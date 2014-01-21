@@ -1,4 +1,3 @@
-# Collect the IPs of the memcached instances for use in application config
 memcached:
   deamonize: True,
   verbose_level: 0,
