@@ -23,7 +23,7 @@ memcached:
       - pkg: memcached
     - watch: 
       - file: /etc/memcached.conf
-
+  
 /etc/memcached.conf:
   file:
     - managed
