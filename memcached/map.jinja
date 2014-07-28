@@ -13,3 +13,15 @@
         'max_core_file_limit': False,
     }  
 } %}
+{% set memcached = salt['grains.filter_by']({
+    'Debian':{
+        'server': 'memcached',
+        'service': 'memcached',
+        'python': 'python-memcache',
+    },
+    'RedHat': {
+        'server': 'memcached',
+        'service': 'memcached',
+        'python': 'python-memcached',
+    },
+    }, merge=salt['pillar.get']('memcached:lookup')) %}
