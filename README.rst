@@ -3,8 +3,34 @@ memcached
 
 Install and start the memcached service
 
+.. note::
+
+    See the full `Salt Formulas installation and usage instructions
+    <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
+
+Available states
+================
+
+.. contents::
+    :local:
+
+``memcached``
+-------------
+
+Installs and starts memcached service
+
+``memcached.config``
+--------------------
+
+Memcached configuration file
+
+``memcached.python_memcached``
+------------------------------
+
+Installs ``python-memcached`` package for RedHat/CentOS and ``python-memcache`` package for Debian
+
 Instructions
-------------
+============
 
 1.  Add this repository as a `GitFS backend`_ in your Salt master config.
 
