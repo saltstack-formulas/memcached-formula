@@ -18,10 +18,12 @@
         'server': 'memcached',
         'service': 'memcached',
         'python': 'python-memcache',
+        'config_file': '/etc/memcached.conf',
     },
     'RedHat': {
         'server': 'memcached',
         'service': 'memcached',
         'python': 'python-memcached',
+        'config_file': '/etc/sysconfig/memcached',
     },
     }, merge=salt['pillar.get']('memcached:lookup')) %}
