@@ -1,0 +1,25 @@
+{% from 'memcached/macros.sls' import get_config_item with context -%}
+
+PORT="{{ get_config_item('port') }}"
+USER="{{ get_config_item('user') }}"
+MAXCONN="{{ get_config_item('max_connections') }}"
+CACHESIZE="{{ get_config_item('memory_cap') }}"
+OPTIONS="-l {{ get_config_item('listen_address') }}"
+
+{% if get_config_item('lock_paged_memory') == 'True' %}
+OPTIONS="$OPTIONS -k"
+{% endif %}
+
+{% if get_config_item('error_on_mem_full') == 'True' %}
+OPTIONS="$OPTIONS -M"
+{% endif %}
+
+{% if get_config_item('max_core_file_"limit') == 'True' %}
+OPTIONS="$OPTIONS -r"
+{% endif %}
+
+{% if get_config_item('verbose_level') == '1' %}
+OPTIONS="$OPTIONS -v >> {{ get_config_item('log_file') }} 2>&1"
+{% elif get_config_item('verbose_level') == '2' %}
+OPTIONS="$OPTIONS -vv >> {{ get_config_item('log_file') }} 2>&1"
+{% endif %}
