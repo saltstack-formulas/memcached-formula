@@ -29,6 +29,11 @@ Memcached configuration file
 
 Installs ``python-memcached`` package for RedHat/CentOS and ``python-memcache`` package for Debian
 
+``memcached.libmemcached``
+--------------------
+
+Installs libmemcached development files to install ``pylibmc`` as python driver
+
 Instructions
 ============
 
