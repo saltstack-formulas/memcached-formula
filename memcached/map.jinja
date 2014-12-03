@@ -28,4 +28,11 @@
         'config_file': '/etc/sysconfig/memcached',
         'libmemcached': 'libmemcached-devel',
     },
+    'Gentoo':{
+        'server': 'net-misc/memcached',
+        'service': 'memcached',
+        'python': 'dev-python/python-memcache',
+        'config_file': '/etc/conf.d/memcached',
+        'libmemcached': 'dev-libs/libmemcached',
+    },
     }, merge=salt['pillar.get']('memcached:lookup')) %}
