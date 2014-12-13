@@ -1,11 +1,9 @@
 {% from 'memcached/map.jinja' import memcached with context %}
 
 memcached:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ memcached.server }}
-  service:
-    - running
+  service.running:
     - enable: True
     - name: {{ memcached.service }}
     - require:
