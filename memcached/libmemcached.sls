@@ -1,6 +1,5 @@
 {% from 'memcached/map.jinja' import memcached with context %}
 
 libmemcached:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ memcached.libmemcached }}
