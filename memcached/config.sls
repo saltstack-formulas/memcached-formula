@@ -16,6 +16,8 @@ include:
     - source: salt://memcached/templates/sysconfig/memcached
     {% elif grains['os_family'] == 'Gentoo' %}
     - source: salt://memcached/templates/conf.d/memcached
+    {% elif grains['os_family'] == 'Arch' %}
+    - source: salt://memcached/templates/empty
     {% endif %}
     - watch_in:
       - service: memcached

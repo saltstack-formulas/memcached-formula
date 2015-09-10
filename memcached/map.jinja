@@ -35,4 +35,11 @@
         'config_file': '/etc/conf.d/memcached',
         'libmemcached': 'dev-libs/libmemcached',
     },
+    'Arch':{
+        'server': 'memcached',
+        'service': 'memcached',
+        'python': 'python2-memcached',
+        'config_file': '/etc/memcached',
+        'libmemcached': 'libmemcached',
+    },
     }, merge=salt['pillar.get']('memcached:lookup')) %}
