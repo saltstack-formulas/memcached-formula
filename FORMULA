@@ -1,0 +1,9 @@
+name: memcached
+os: RedHat, Debian, Arch, Gentoo
+os_family: RedHat, Debian, Arch, Gentoo
+version: 201601
+release: 1
+minimum_version: 2015.8
+top_level_dir: memcached
+summary: Formula for installing memcached
+description: Formula for installing memcached
