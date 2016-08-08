@@ -9,3 +9,4 @@ memcached:
   lock_paged_memory: False
   error_on_mem_full: False
   max_core_file_limit: False
+  slab_size_limit: 1m
