@@ -14,8 +14,12 @@ OPTIONS="$OPTIONS -k"
 OPTIONS="$OPTIONS -M"
 {% endif %}
 
-{% if get_config_item('max_core_file_"limit') == 'True' %}
+{% if get_config_item('max_core_file_limit') == 'True' %}
 OPTIONS="$OPTIONS -r"
+{% endif %}
+
+{% if get_config_item('slab_size_limit') != '1m' %}
+OPTIONS="$OPTIONS -I {{ get_config_item('slab_size_limit') }}"
 {% endif %}
 
 {% if get_config_item('verbose_level') == '1' %}
