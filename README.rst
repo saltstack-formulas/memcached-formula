@@ -34,6 +34,11 @@ Installs ``python-memcached`` package for RedHat/CentOS and ``python-memcache`` 
 
 Installs libmemcached development files to install ``pylibmc`` as python driver
 
+``memcached.uninstall``
+-------------
+
+Stops the memcached service and uninstalls the package.
+
 Instructions
 ============
 
