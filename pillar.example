@@ -1,5 +1,5 @@
 memcached:
-  deamonize: True
+  daemonize: True
   verbose_level: 0
   memory_cap: 64
   port: 11211
