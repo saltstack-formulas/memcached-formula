@@ -15,6 +15,13 @@
     }
 } %}
 {% set memcached = salt['grains.filter_by']({
+    'Suse':{
+        'server': 'memcached',
+        'service': 'memcached',
+        'python': 'python-python-memcached',
+        'config_file': '/etc/memcached.conf',
+        'libmemcached': 'libmemcached-devel',
+    },
     'Debian':{
         'server': 'memcached',
         'service': 'memcached',
