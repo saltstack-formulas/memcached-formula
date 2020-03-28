@@ -1,7 +1,14 @@
 {% from 'memcached/map.jinja' import memcached with context %}
+{% from 'memcached/macros.sls' import get_config_item with context -%}
 
 include:
   - memcached
+  
+memcached_user:
+  user.present:
+    - name : {{ get_config_item('user') }}
+    - createhome: False
+    - shell: /sbin/nologin
 
 {{ memcached.config_file }}:
   file:
@@ -21,3 +28,6 @@ include:
     {% endif %}
     - watch_in:
       - service: memcached
+    - require:
+      - user: memcached_user
+
