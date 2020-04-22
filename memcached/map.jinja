@@ -22,6 +22,12 @@
         'config_file': '/etc/memcached.conf',
         'libmemcached': 'libmemcached-devel',
     },
+    'FreeBSD':{
+        'server': 'memcached',
+        'service': 'memcached',
+        'config_file': '/usr/local/etc/rc.d/memcached',
+        'libmemcached': 'libmemcached-devel',
+    },
     'Debian':{
         'server': 'memcached',
         'service': 'memcached',

@@ -1,7 +1,7 @@
 memcached
 =========
 
-Install and start the memcached service
+Install and start the memcached service on GNU/Linux and FreeBSD
 
 .. note::
 
