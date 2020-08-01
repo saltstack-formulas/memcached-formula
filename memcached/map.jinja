@@ -1,3 +1,9 @@
+{%- if grains.os == 'MacOS' %}
+    {%- set rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
+{%- else %}
+    {%- set rootuser == 'root' %}
+{%- endif %}
+
 {% set defaults = {
     'config':{
         'daemonize': True,
@@ -15,18 +21,27 @@
     }
 } %}
 {% set memcached = salt['grains.filter_by']({
+    'Default':{
+        'server': 'memcached',
+        'service': 'memcached',
+        'python': 'python-python-memcached',
+        'config_file': '/etc/memcached.conf',
+        'rootuser': {{ rootuser }},
+    },
     'Suse':{
         'server': 'memcached',
         'service': 'memcached',
         'python': 'python-python-memcached',
         'config_file': '/etc/memcached.conf',
         'libmemcached': 'libmemcached-devel',
+        'rootuser': {{ rootuser }},
     },
     'FreeBSD':{
         'server': 'memcached',
         'service': 'memcached',
         'config_file': '/usr/local/etc/rc.d/memcached',
         'libmemcached': 'libmemcached-devel',
+        'rootuser': {{ rootuser }},
     },
     'Debian':{
         'server': 'memcached',
@@ -34,6 +49,7 @@
         'python': 'python-memcache',
         'config_file': '/etc/memcached.conf',
         'libmemcached': 'libmemcached-dev',
+        'rootuser': {{ rootuser }},
     },
     'RedHat': {
         'server': 'memcached',
@@ -41,6 +57,7 @@
         'python': 'python-memcached',
         'config_file': '/etc/sysconfig/memcached',
         'libmemcached': 'libmemcached-devel',
+        'rootuser': {{ rootuser }},
     },
     'Gentoo':{
         'server': 'net-misc/memcached',
@@ -48,6 +65,7 @@
         'python': 'dev-python/python-memcache',
         'config_file': '/etc/conf.d/memcached',
         'libmemcached': 'dev-libs/libmemcached',
+        'rootuser': {{ rootuser }},
     },
     'Arch':{
         'server': 'memcached',
@@ -55,5 +73,6 @@
         'python': 'python2-memcached',
         'config_file': '/etc/memcached',
         'libmemcached': 'libmemcached',
+        'rootuser': {{ rootuser }},
     },
     }, merge=salt['pillar.get']('memcached:lookup')) %}

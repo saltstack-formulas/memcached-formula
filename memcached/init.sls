@@ -19,6 +19,7 @@ memcached:
         {%- else %}
   pkg.installed:
     - name: {{ memcached.server }}
+    - runas: {{ memcached.rootuser }}
         {%- endif %}
     - require_in:
       - service: memcached
