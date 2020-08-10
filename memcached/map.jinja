@@ -1,7 +1,7 @@
 {%- if grains.os == 'MacOS' %}
     {%- set rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
 {%- else %}
-    {%- set rootuser == 'root' %}
+    {%- set rootuser = 'root' %}
 {%- endif %}
 
 {% set defaults = {
