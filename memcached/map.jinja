@@ -11,13 +11,13 @@
         'log_file': '/var/log/memcached.log',
         'memory_cap': 64,
         'port': 11211,
-        'user':' memcache',
+        'user': 'memcache',
         'listen_address': '127.0.0.1',
         'max_connections': 1024,
         'lock_paged_memory': False,
         'error_on_mem_full': False,
         'max_core_file_limit': False,
-        'slab_size_limit': '1m',
+        'slab_size_limit': '1m'
     }
 } %}
 {% set memcached = salt['grains.filter_by']({
@@ -26,7 +26,7 @@
         'service': 'memcached',
         'python': 'python-python-memcached',
         'config_file': '/etc/memcached.conf',
-        'rootuser': {{ rootuser }},
+        'rootuser':  rootuser,
     },
     'Suse':{
         'server': 'memcached',
@@ -34,14 +34,14 @@
         'python': 'python-python-memcached',
         'config_file': '/etc/memcached.conf',
         'libmemcached': 'libmemcached-devel',
-        'rootuser': {{ rootuser }},
+        'rootuser':  rootuser,
     },
     'FreeBSD':{
         'server': 'memcached',
         'service': 'memcached',
         'config_file': '/usr/local/etc/rc.d/memcached',
         'libmemcached': 'libmemcached-devel',
-        'rootuser': {{ rootuser }},
+        'rootuser':  rootuser,
     },
     'Debian':{
         'server': 'memcached',
@@ -49,7 +49,7 @@
         'python': 'python-memcache',
         'config_file': '/etc/memcached.conf',
         'libmemcached': 'libmemcached-dev',
-        'rootuser': {{ rootuser }},
+        'rootuser':  rootuser,
     },
     'RedHat': {
         'server': 'memcached',
@@ -57,7 +57,7 @@
         'python': 'python-memcached',
         'config_file': '/etc/sysconfig/memcached',
         'libmemcached': 'libmemcached-devel',
-        'rootuser': {{ rootuser }},
+        'rootuser':  rootuser,
     },
     'Gentoo':{
         'server': 'net-misc/memcached',
@@ -65,7 +65,7 @@
         'python': 'dev-python/python-memcache',
         'config_file': '/etc/conf.d/memcached',
         'libmemcached': 'dev-libs/libmemcached',
-        'rootuser': {{ rootuser }},
+        'rootuser':  rootuser,
     },
     'Arch':{
         'server': 'memcached',
@@ -73,6 +73,6 @@
         'python': 'python2-memcached',
         'config_file': '/etc/memcached',
         'libmemcached': 'libmemcached',
-        'rootuser': {{ rootuser }},
+        'rootuser':  rootuser,
     },
     }, merge=salt['pillar.get']('memcached:lookup')) %}
