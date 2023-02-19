@@ -1,6 +1,6 @@
 name: memcached
-os: RedHat, Debian, Arch, Gentoo
-os_family: RedHat, Debian, Arch, Gentoo
+os: RedHat, Debian, Arch, Gentoo, SUSE
+os_family: RedHat, Debian, Arch, Gentoo, Suse
 version: 201601
 release: 1
 minimum_version: 2015.8
